@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.InvestmentAndDistributionRulesMapper">
+  <resultMap id="BaseResultMap" type="com.entity.InvestmentAndDistributionRules">
+    <!--@mbg.generated-->
+    <!--@Table investment_and_distribution_rules-->
+    <id column="rule__id" jdbcType="BIGINT" property="ruleId" />
+    <result column="goods_id" jdbcType="VARCHAR" property="goodsId" />
+    <result column="up_time" jdbcType="TIMESTAMP" property="upTime" />
+    <result column="offline_time" jdbcType="TIMESTAMP" property="offlineTime" />
+    <result column="rule_type" jdbcType="TINYINT" property="ruleType" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    rule__id, goods_id, up_time, offline_time, rule_type, gmt_create, gmt_modified, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from investment_and_distribution_rules
+    where rule__id = #{ruleId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from investment_and_distribution_rules
+    where rule__id = #{ruleId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="rule__id" keyProperty="ruleId" parameterType="com.entity.InvestmentAndDistributionRules" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into investment_and_distribution_rules (goods_id, up_time, offline_time, 
+      rule_type, gmt_create, gmt_modified, 
+      is_deleted)
+    values (#{goodsId,jdbcType=VARCHAR}, #{upTime,jdbcType=TIMESTAMP}, #{offlineTime,jdbcType=TIMESTAMP}, 
+      #{ruleType,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="rule__id" keyProperty="ruleId" parameterType="com.entity.InvestmentAndDistributionRules" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into investment_and_distribution_rules
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="upTime != null">
+        up_time,
+      </if>
+      <if test="offlineTime != null">
+        offline_time,
+      </if>
+      <if test="ruleType != null">
+        rule_type,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="upTime != null">
+        #{upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offlineTime != null">
+        #{offlineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ruleType != null">
+        #{ruleType,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.InvestmentAndDistributionRules">
+    <!--@mbg.generated-->
+    update investment_and_distribution_rules
+    <set>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="upTime != null">
+        up_time = #{upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offlineTime != null">
+        offline_time = #{offlineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ruleType != null">
+        rule_type = #{ruleType,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where rule__id = #{ruleId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.InvestmentAndDistributionRules">
+    <!--@mbg.generated-->
+    update investment_and_distribution_rules
+    set goods_id = #{goodsId,jdbcType=VARCHAR},
+      up_time = #{upTime,jdbcType=TIMESTAMP},
+      offline_time = #{offlineTime,jdbcType=TIMESTAMP},
+      rule_type = #{ruleType,jdbcType=TINYINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where rule__id = #{ruleId,jdbcType=BIGINT}
+  </update>
+</mapper>

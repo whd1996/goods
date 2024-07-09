@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserPointMapper">
+  <resultMap id="BaseResultMap" type="com.entity.UserPoint">
+    <!--@mbg.generated-->
+    <!--@Table user_point-->
+    <id column="user_point_id" jdbcType="BIGINT" property="userPointId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="point_num" jdbcType="INTEGER" property="pointNum" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_point_id, user_id, point_num, gmt_create, gmt_modified, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user_point
+    where user_point_id = #{userPointId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from user_point
+    where user_point_id = #{userPointId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="user_point_id" keyProperty="userPointId" parameterType="com.entity.UserPoint" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_point (user_id, point_num, gmt_create, 
+      gmt_modified, is_deleted)
+    values (#{userId,jdbcType=VARCHAR}, #{pointNum,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="user_point_id" keyProperty="userPointId" parameterType="com.entity.UserPoint" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_point
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="pointNum != null">
+        point_num,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="pointNum != null">
+        #{pointNum,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.UserPoint">
+    <!--@mbg.generated-->
+    update user_point
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="pointNum != null">
+        point_num = #{pointNum,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where user_point_id = #{userPointId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.UserPoint">
+    <!--@mbg.generated-->
+    update user_point
+    set user_id = #{userId,jdbcType=VARCHAR},
+      point_num = #{pointNum,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where user_point_id = #{userPointId,jdbcType=BIGINT}
+  </update>
+</mapper>
